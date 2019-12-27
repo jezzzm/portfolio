@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
-import Logo from "components/_ui/Logo";
 
 const HeaderContainer = styled("div")`
     padding-top: 3.75em;
@@ -75,19 +74,21 @@ const HeaderLinks = styled("div")`
 const Header = () => (
     <HeaderContainer>
         <HeaderContent>
-            <Link to="/">
-                <Logo/>
+            <Link
+              activeClassName="Link--is-active"
+              to="/">
+              Home
             </Link>
             <HeaderLinks>
                 <Link
                     activeClassName="Link--is-active"
                     to="/work">
-                    Work
+                    Projects
                 </Link>
                 <Link
                     activeClassName="Link--is-active"
                     to="/blog">
-                    Blog
+                    Writing
                 </Link>
             </HeaderLinks>
         </HeaderContent>

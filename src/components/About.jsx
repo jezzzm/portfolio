@@ -80,7 +80,7 @@ const AboutActions = styled("div")`
 `
 
 
-const About = ({ bio, socialLinks }) => (
+const About = ({ bio, socialLinks }) =>  {console.log(socialLinks); return(
     <AboutContainer>
         <AboutLinkContainer>
             {socialLinks.map((social, i) => (
@@ -97,14 +97,14 @@ const About = ({ bio, socialLinks }) => (
             {RichText.render(bio)}
         </AboutBio>
         <AboutActions>
-            <a href="mailto:marguerite.roth@gmail.com" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:jez.milledge@gmail.com" target="_blank" rel="noopener noreferrer">
                 <Button className="Button--secondary">
                     Email me
                 </Button>
             </a>
         </AboutActions>
     </AboutContainer>
-)
+)}
 
 export default About;
 
