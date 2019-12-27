@@ -63,7 +63,7 @@ const Section = styled("div")`
     }
 `
 
-const WorkAction = styled(Link)`
+const ProjectAction = styled(Link)`
     font-weight: 600;
     text-decoration: none;
     color: currentColor;
@@ -153,11 +153,13 @@ const RenderBody = ({ home, projects, meta }) => (
                     description={project.node.project_preview_description}
                     thumbnail={project.node.project_preview_thumbnail}
                     uid={project.node._meta.uid}
+                    demo={project.node.project_demo}
+                    repo={project.node.project_repo}
                 />
             ))}
-            <WorkAction to={"/work"}>
-                See more work <span>&#8594;</span>
-            </WorkAction>
+            <ProjectAction to={"/projects"}>
+                See more projects <span>&#8594;</span>
+            </ProjectAction>
         </Section>
         <Section>
             {RichText.render(home.about_title)}
@@ -221,6 +223,18 @@ export const query = graphql`
                         project_preview_thumbnail
                         project_category
                         project_post_date
+                        project_demo {
+                          __typename
+                          ... on PRISMIC__ExternalLink{
+                            url
+                          }
+                        }
+                        project_repo {
+                          __typename
+                          ... on PRISMIC__ExternalLink{
+                            url
+                          }
+                        }
                         _meta {
                             uid
                         }

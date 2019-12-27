@@ -43,9 +43,14 @@ const ProjectBody = styled("div")`
     }
 `
 
-const WorkLink = styled(Link)`
+const ProjectLink = styled(Link)`
     margin-top: 3em;
     display: block;
+    text-align: center;
+`
+const ProjectExternalLink = styled("a")`
+    margin-top: 1em;
+    display: inline-block;
     text-align: center;
 `
 
@@ -54,7 +59,7 @@ const Project = ({ project, meta }) => {
     return (
         <>
             <Helmet
-                title={`${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`}
+                title={`${project.project_title[0].text} | Jez Milledge`}
                 titleTemplate={`%s | ${meta.title}`}
                 meta={[
                     {
@@ -63,7 +68,7 @@ const Project = ({ project, meta }) => {
                     },
                     {
                         property: `og:title`,
-                        content: `${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`,
+                        content: `${project.project_title[0].text} | Jez Milledge`,
                     },
                     {
                         property: `og:description`,
@@ -92,21 +97,34 @@ const Project = ({ project, meta }) => {
                 ].concat(meta)}
             />
             <Layout>
+
                 <ProjectTitle>
                     {RichText.render(project.project_title)}
                 </ProjectTitle>
+
                 {project.project_hero_image && (
                     <ProjectHeroContainer>
                         <img src={project.project_hero_image.url} alt="bees" />
                     </ProjectHeroContainer>
                 )}
                 <ProjectBody>
-                    {RichText.render(project.project_description)}
-                    <WorkLink to={"/work"}>
-                        <Button className="Button--secondary">
-                            See other work
-                        </Button>
-                    </WorkLink>
+                  <ProjectExternalLink href={project.project_repo.url} target="_blank">
+                      <Button className="Button--secondary">
+                          Repo
+                      </Button>
+                  </ProjectExternalLink>
+                  <ProjectExternalLink href={project.project_demo.url} target="_blank">
+                      <Button className="Button--secondary">
+                          Demo
+                      </Button>
+                  </ProjectExternalLink>
+                  {RichText.render(project.project_description)}
+                  <ProjectLink to={"/projects"}>
+                      <Button className="Button--secondary">
+                          See other projects
+                      </Button>
+                  </ProjectLink>
+
                 </ProjectBody>
             </Layout>
         </>
@@ -138,6 +156,18 @@ export const query = graphql`
                         project_post_date
                         project_hero_image
                         project_description
+                        project_demo {
+                          __typename
+                          ... on PRISMIC__ExternalLink{
+                            url
+                          }
+                        }
+                        project_repo {
+                          __typename
+                          ... on PRISMIC__ExternalLink{
+                            url
+                          }
+                        }
                         _meta {
                             uid
                         }
