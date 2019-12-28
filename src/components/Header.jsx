@@ -7,12 +7,12 @@ import dimensions from "styles/dimensions";
 const HeaderContainer = styled("div")`
     padding-top: 3.75em;
     padding-bottom: 3em;
-`
+`;
 
 const HeaderContent = styled("div")`
     display: flex;
     justify-content: space-between;
-`
+`;
 
 const HeaderLinks = styled("div")`
     display: grid;
@@ -22,11 +22,11 @@ const HeaderLinks = styled("div")`
     width: 100%;
     max-width: 200px;
 
-    @media(max-width: ${dimensions.maxwidthTablet}px) {
+    @media (max-width: ${dimensions.maxwidthTablet}px) {
         grid-gap: 5.5em;
     }
 
-    @media(max-width: ${dimensions.maxwidthMobile}px) {
+    @media (max-width: ${dimensions.maxwidthMobile}px) {
         grid-gap: 2.5em;
     }
 
@@ -69,30 +69,34 @@ const HeaderLinks = styled("div")`
             }
         }
     }
-`
+`;
+
+const Logo = styled.h2`
+    margin: 0;
+    color: ${colors.grey900};
+`;
+
+const LogoLink = styled(Link)`
+    text-decoration: none;
+`;
 
 const Header = () => (
     <HeaderContainer>
         <HeaderContent>
-            <Link
-              activeClassName="Link--is-active"
-              to="/">
-              Home
-            </Link>
+            <LogoLink activeClassName="Link--is-active" to="/">
+                <Logo>Jez Milledge</Logo>
+            </LogoLink>
             <HeaderLinks>
-                <Link
-                    activeClassName="Link--is-active"
-                    to="/projects">
+                <Link activeClassName="Link--is-active" to="/projects">
                     Projects
-                </Link>
-                <Link
-                    activeClassName="Link--is-active"
-                    to="/blog">
-                    Writing
                 </Link>
             </HeaderLinks>
         </HeaderContent>
     </HeaderContainer>
-)
-
+);
+// {
+//     /* <Link activeClassName="Link--is-active" to="/blog">
+//     Writing
+// </Link>; */
+// }
 export default Header;

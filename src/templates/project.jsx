@@ -16,10 +16,23 @@ const ProjectHeroContainer = styled("div")`
     overflow: hidden;
     position: relative;
     padding-top: 2.25em;
-    margin-bottom: 3.5em;
+    margin: 3.5em 0;
 
     img {
         max-width: 600px;
+    }
+`;
+
+const ProjectCategory = styled.div`
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 600;
+    color: ${colors.grey600};
+
+    h5 {
+        margin-top: 0;
+        margin-bottom: 1em;
     }
 `;
 
@@ -27,6 +40,10 @@ const ProjectTitle = styled("div")`
     max-width: 550px;
     margin: 0 auto;
     text-align: center;
+
+    h1 {
+        margin-top: 0;
+    }
 `;
 
 const ProjectBody = styled("div")`
@@ -48,10 +65,14 @@ const ProjectLink = styled(Link)`
     display: block;
     text-align: center;
 `;
+
 const ProjectExternalLink = styled("a")`
     margin-top: 1em;
     display: inline-block;
     text-align: center;
+    &:first-of-type {
+        margin-right: 0.5em;
+    }
 `;
 
 const Project = ({ project, meta }) => {
@@ -96,16 +117,11 @@ const Project = ({ project, meta }) => {
                 ].concat(meta)}
             />
             <Layout>
+                <ProjectCategory>
+                    {RichText.render(project.project_category)}
+                </ProjectCategory>
                 <ProjectTitle>
                     {RichText.render(project.project_title)}
-                </ProjectTitle>
-
-                {project.project_hero_image && (
-                    <ProjectHeroContainer>
-                        <img src={project.project_hero_image.url} alt="bees" />
-                    </ProjectHeroContainer>
-                )}
-                <ProjectBody>
                     {project.project_repo && (
                         <ProjectExternalLink
                             href={project.project_repo.url}
@@ -122,6 +138,14 @@ const Project = ({ project, meta }) => {
                             <Button className="Button--secondary">Demo</Button>
                         </ProjectExternalLink>
                     )}
+                </ProjectTitle>
+
+                {project.project_hero_image && (
+                    <ProjectHeroContainer>
+                        <img src={project.project_hero_image.url} alt="bees" />
+                    </ProjectHeroContainer>
+                )}
+                <ProjectBody>
                     {RichText.render(project.project_description)}
                     <ProjectLink to={"/projects"}>
                         <Button className="Button--secondary">

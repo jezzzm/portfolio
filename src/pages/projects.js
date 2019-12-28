@@ -8,7 +8,7 @@ import ProjectCard from "components/ProjectCard";
 
 const ProjectTitle = styled("h1")`
     margin-bottom: 1em;
-`
+`;
 
 const Projects = ({ projects, meta }) => (
     <>
@@ -51,9 +51,7 @@ const Projects = ({ projects, meta }) => (
             ].concat(meta)}
         />
         <Layout>
-            <ProjectTitle>
-                Projects
-            </ProjectTitle>
+            <ProjectTitle>Projects</ProjectTitle>
             <>
                 {projects.map((project, i) => (
                     <ProjectCard
@@ -77,10 +75,8 @@ export default ({ data }) => {
     const meta = data.site.siteMetadata;
     if (!projects) return null;
 
-    return (
-        <Projects projects={projects} meta={meta}/>
-    )
-}
+    return <Projects projects={projects} meta={meta} />;
+};
 
 Projects.propTypes = {
     projects: PropTypes.array.isRequired,
@@ -89,7 +85,7 @@ Projects.propTypes = {
 export const query = graphql`
     {
         prismic {
-            allProjects {
+            allProjects(sortBy: project_post_date_DESC) {
                 edges {
                     node {
                         project_title
@@ -112,4 +108,4 @@ export const query = graphql`
             }
         }
     }
-`
+`;
