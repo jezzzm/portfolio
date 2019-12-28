@@ -17,8 +17,8 @@ const Hero = styled("div")`
     margin-bottom: 6em;
     max-width: 830px;
 
-    @media(max-width:${dimensions.maxwidthMobile}px) {
-       margin-bottom: 3em;
+    @media (max-width: ${dimensions.maxwidthMobile}px) {
+        margin-bottom: 3em;
     }
 
     h1 {
@@ -28,40 +28,64 @@ const Hero = styled("div")`
             text-decoration: none;
             transition: all 100ms ease-in-out;
 
-            &:nth-of-type(1) { color: ${colors.blue500}; }
-            &:nth-of-type(2) { color: ${colors.orange500}; }
-            &:nth-of-type(3) { color: ${colors.purple500}; }
-            &:nth-of-type(4) { color: ${colors.green500}; }
-            &:nth-of-type(5) { color: ${colors.teal500}; }
+            &:nth-of-type(1) {
+                color: ${colors.blue500};
+            }
+            &:nth-of-type(2) {
+                color: ${colors.orange500};
+            }
+            &:nth-of-type(3) {
+                color: ${colors.purple500};
+            }
+            &:nth-of-type(4) {
+                color: ${colors.green500};
+            }
+            &:nth-of-type(5) {
+                color: ${colors.teal500};
+            }
 
             &:hover {
                 cursor: pointer;
                 transition: all 100ms ease-in-out;
 
-                &:nth-of-type(1) { color: ${colors.blue600};    background-color: ${colors.blue200};}
-                &:nth-of-type(2) { color: ${colors.orange600};  background-color: ${colors.orange200};}
-                &:nth-of-type(3) { color: ${colors.purple600};  background-color: ${colors.purple200};}
-                &:nth-of-type(4) { color: ${colors.green600};   background-color: ${colors.green200};}
-                &:nth-of-type(5) { color: ${colors.teal600};    background-color: ${colors.teal200};}
-
+                &:nth-of-type(1) {
+                    color: ${colors.blue600};
+                    background-color: ${colors.blue200};
+                }
+                &:nth-of-type(2) {
+                    color: ${colors.orange600};
+                    background-color: ${colors.orange200};
+                }
+                &:nth-of-type(3) {
+                    color: ${colors.purple600};
+                    background-color: ${colors.purple200};
+                }
+                &:nth-of-type(4) {
+                    color: ${colors.green600};
+                    background-color: ${colors.green200};
+                }
+                &:nth-of-type(5) {
+                    color: ${colors.teal600};
+                    background-color: ${colors.teal200};
+                }
             }
         }
     }
-`
+`;
 
 const Section = styled("div")`
     margin-bottom: 10em;
     display: flex;
     flex-direction: column;
 
-    @media(max-width:${dimensions.maxwidthTablet}px) {
+    @media (max-width: ${dimensions.maxwidthTablet}px) {
         margin-bottom: 4em;
     }
 
     &:last-of-type {
         margin-bottom: 0;
     }
-`
+`;
 
 const ProjectAction = styled(Link)`
     font-weight: 600;
@@ -70,8 +94,8 @@ const ProjectAction = styled(Link)`
     transition: all 150ms ease-in-out;
     margin-left: auto;
 
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-       margin: 0 auto;
+    @media (max-width: ${dimensions.maxwidthTablet}px) {
+        margin: 0 auto;
     }
 
     span {
@@ -91,7 +115,12 @@ const ProjectAction = styled(Link)`
             transition: transform 150ms ease-in-out;
         }
     }
-`
+`;
+
+const ProfilePic = styled.img`
+    max-width: 100%;
+    width: 400px;
+`;
 
 const RenderBody = ({ home, projects, meta }) => (
     <>
@@ -134,16 +163,14 @@ const RenderBody = ({ home, projects, meta }) => (
             ].concat(meta)}
         />
         <Hero>
-            <>
-                {RichText.render(home.hero_title)}
-            </>
-            <a href={home.hero_button_link.url}
-               target="_blank" rel="noopener noreferrer">
-                <Button>
-                    {RichText.render(home.hero_button_text)}
-                </Button>
-            </a>
+            <ProfilePic src={home.profile_pic.url} alt="Pic of Jez" />
+
+            <>{RichText.render(home.hero_title)}</>
+            <Link to="#about">
+                <Button>{RichText.render(home.hero_button_text)}</Button>
+            </Link>
         </Hero>
+        <h1>Recent Projects</h1>
         <Section>
             {projects.map((project, i) => (
                 <ProjectCard
@@ -161,12 +188,9 @@ const RenderBody = ({ home, projects, meta }) => (
                 See more projects <span>&#8594;</span>
             </ProjectAction>
         </Section>
-        <Section>
+        <Section id="about">
             {RichText.render(home.about_title)}
-            <About
-                bio={home.about_bio}
-                socialLinks={home.about_links}
-            />
+            <About bio={home.about_bio} socialLinks={home.about_links} />
         </Section>
     </>
 );
@@ -181,10 +205,10 @@ export default ({ data }) => {
 
     return (
         <Layout>
-            <RenderBody home={doc.node} projects={projects} meta={meta}/>
+            <RenderBody home={doc.node} projects={projects} meta={meta} />
         </Layout>
-    )
-}
+    );
+};
 
 RenderBody.propTypes = {
     home: PropTypes.object.isRequired,
@@ -209,6 +233,7 @@ export const query = graphql`
                         content
                         about_title
                         about_bio
+                        profile_pic
                         about_links {
                             about_link
                         }
@@ -224,16 +249,16 @@ export const query = graphql`
                         project_category
                         project_post_date
                         project_demo {
-                          __typename
-                          ... on PRISMIC__ExternalLink{
-                            url
-                          }
+                            __typename
+                            ... on PRISMIC__ExternalLink {
+                                url
+                            }
                         }
                         project_repo {
-                          __typename
-                          ... on PRISMIC__ExternalLink{
-                            url
-                          }
+                            __typename
+                            ... on PRISMIC__ExternalLink {
+                                url
+                            }
                         }
                         _meta {
                             uid
@@ -250,4 +275,4 @@ export const query = graphql`
             }
         }
     }
-`
+`;

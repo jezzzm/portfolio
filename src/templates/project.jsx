@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
-import { Link, graphql } from 'gatsby';
+import { Link, graphql } from "gatsby";
 import { RichText } from "prismic-reactjs";
 import Button from "components/_ui/Button";
 import Layout from "components/Layout";
@@ -21,13 +21,13 @@ const ProjectHeroContainer = styled("div")`
     img {
         max-width: 600px;
     }
-`
+`;
 
-const ProjectTitle = styled("div") `
+const ProjectTitle = styled("div")`
     max-width: 550px;
     margin: 0 auto;
     text-align: center;
-`
+`;
 
 const ProjectBody = styled("div")`
     max-width: 550px;
@@ -41,19 +41,18 @@ const ProjectBody = styled("div")`
             width: 100%;
         }
     }
-`
+`;
 
 const ProjectLink = styled(Link)`
     margin-top: 3em;
     display: block;
     text-align: center;
-`
+`;
 const ProjectExternalLink = styled("a")`
     margin-top: 1em;
     display: inline-block;
     text-align: center;
-`
-
+`;
 
 const Project = ({ project, meta }) => {
     return (
@@ -97,7 +96,6 @@ const Project = ({ project, meta }) => {
                 ].concat(meta)}
             />
             <Layout>
-
                 <ProjectTitle>
                     {RichText.render(project.project_title)}
                 </ProjectTitle>
@@ -108,36 +106,39 @@ const Project = ({ project, meta }) => {
                     </ProjectHeroContainer>
                 )}
                 <ProjectBody>
-                  <ProjectExternalLink href={project.project_repo.url} target="_blank">
-                      <Button className="Button--secondary">
-                          Repo
-                      </Button>
-                  </ProjectExternalLink>
-                  <ProjectExternalLink href={project.project_demo.url} target="_blank">
-                      <Button className="Button--secondary">
-                          Demo
-                      </Button>
-                  </ProjectExternalLink>
-                  {RichText.render(project.project_description)}
-                  <ProjectLink to={"/projects"}>
-                      <Button className="Button--secondary">
-                          See other projects
-                      </Button>
-                  </ProjectLink>
-
+                    {project.project_repo && (
+                        <ProjectExternalLink
+                            href={project.project_repo.url}
+                            target="_blank"
+                        >
+                            <Button className="Button--secondary">Repo</Button>
+                        </ProjectExternalLink>
+                    )}
+                    {project.project_demo && (
+                        <ProjectExternalLink
+                            href={project.project_demo.url}
+                            target="_blank"
+                        >
+                            <Button className="Button--secondary">Demo</Button>
+                        </ProjectExternalLink>
+                    )}
+                    {RichText.render(project.project_description)}
+                    <ProjectLink to={"/projects"}>
+                        <Button className="Button--secondary">
+                            See other projects
+                        </Button>
+                    </ProjectLink>
                 </ProjectBody>
             </Layout>
         </>
-    )
-}
+    );
+};
 
 export default ({ data }) => {
     const projectContent = data.prismic.allProjects.edges[0].node;
     const meta = data.site.siteMetadata;
-    return (
-        <Project project={projectContent} meta={meta}/>
-    )
-}
+    return <Project project={projectContent} meta={meta} />;
+};
 
 Project.propTypes = {
     project: PropTypes.object.isRequired,
@@ -157,16 +158,16 @@ export const query = graphql`
                         project_hero_image
                         project_description
                         project_demo {
-                          __typename
-                          ... on PRISMIC__ExternalLink{
-                            url
-                          }
+                            __typename
+                            ... on PRISMIC__ExternalLink {
+                                url
+                            }
                         }
                         project_repo {
-                          __typename
-                          ... on PRISMIC__ExternalLink{
-                            url
-                          }
+                            __typename
+                            ... on PRISMIC__ExternalLink {
+                                url
+                            }
                         }
                         _meta {
                             uid
@@ -183,4 +184,4 @@ export const query = graphql`
             }
         }
     }
-`
+`;
