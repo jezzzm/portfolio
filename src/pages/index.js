@@ -10,6 +10,7 @@ import Button from "components/_ui/Button";
 import About from "components/About";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
+import Icons from "components/Icons";
 
 const Hero = styled("div")`
     padding-top: 2.5em;
@@ -73,8 +74,8 @@ const Hero = styled("div")`
     }
 `;
 
-const Section = styled("div")`
-    margin-bottom: 10em;
+const Section = styled("section")`
+    margin-bottom: 2em;
     display: flex;
     flex-direction: column;
 
@@ -84,6 +85,12 @@ const Section = styled("div")`
 
     &:last-of-type {
         margin-bottom: 0;
+    }
+
+    i {
+        display: inline;
+        line-height: 1.5;
+        font-size: 60px;
     }
 `;
 
@@ -192,6 +199,9 @@ const RenderBody = ({ home, projects, meta }) => (
             {RichText.render(home.about_title)}
             <About bio={home.about_bio} socialLinks={home.about_links} />
         </Section>
+        <Section>
+            <Icons />
+        </Section>
     </>
 );
 
@@ -240,7 +250,7 @@ export const query = graphql`
                     }
                 }
             }
-            allProjects(sortBy: project_post_date_DESC) {
+            allProjects(first: 3, sortBy: project_post_date_DESC) {
                 edges {
                     node {
                         project_title

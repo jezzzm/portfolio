@@ -18,7 +18,8 @@ const ProjectHeroContainer = styled("div")`
     padding-top: 2.25em;
     margin: 3.5em 0;
 
-    img {
+    img,
+    video {
         max-width: 600px;
     }
 `;
@@ -142,7 +143,17 @@ const Project = ({ project, meta }) => {
 
                 {project.project_hero_image && (
                     <ProjectHeroContainer>
-                        <img src={project.project_hero_image.url} alt="bees" />
+                        {/* <img src={project.project_hero_image.url} alt="bees" /> */}
+                        <video autoPlay loop muted playsInline>
+                            <source
+                                src={project.project_hero_webm.url}
+                                type="video/webm"
+                            />
+                            <source
+                                src={project.project_hero_mp4.url}
+                                type="video/mp4"
+                            />
+                        </video>
                     </ProjectHeroContainer>
                 )}
                 <ProjectBody>
@@ -180,6 +191,19 @@ export const query = graphql`
                         project_category
                         project_post_date
                         project_hero_image
+                        project_hero_mp4 {
+                            _linkType
+                            ... on PRISMIC__FileLink {
+                                url
+                            }
+                        }
+                        project_hero_webm {
+                            _linkType
+                            ... on PRISMIC__FileLink {
+                                _linkType
+                                url
+                            }
+                        }
                         project_description
                         project_demo {
                             __typename
