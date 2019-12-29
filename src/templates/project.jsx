@@ -159,7 +159,7 @@ const Project = ({ project, meta }) => {
                         ) : (
                             <img
                                 src={project.project_hero_image.url}
-                                alt="bees"
+                                alt={project.project_title}
                             />
                         )}
                     </ProjectHeroContainer>
