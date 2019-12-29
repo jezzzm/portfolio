@@ -85,7 +85,7 @@ const ProjectAction = styled(Link)`
 
 const ProfilePic = styled.img`
   max-width: 100%;
-  width: 400px;
+  width: 300px;
 `;
 
 const RenderBody = ({ home, projects, meta }) => (
@@ -136,7 +136,7 @@ const RenderBody = ({ home, projects, meta }) => (
         <Button>{RichText.render(home.hero_button_text)}</Button>
       </Link>
     </Hero>
-    <h1>Recent Projects</h1>
+    <h2>Recent Projects</h2>
     <Section>
       {projects.map((project, i) => (
         <ProjectCard
