@@ -16,9 +16,9 @@ const AboutContainer = styled("div")`
   }
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
-    grid-template-columns: 7em 1fr;
+    grid-template-columns: auto 1fr;
     grid-template-rows: 3em 1fr;
-    grid-gap: 2em;
+    grid-gap: 2em 0.5em;
   }
 `;
 

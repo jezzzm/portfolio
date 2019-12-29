@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import colors from "../styles/colors";
 
 //icons
 import Atom from "../images/atom.svg";
@@ -41,48 +42,62 @@ const IconSection = styled.section`
     margin: 20px 20px 0 0;
     box-sizing: border-box;
   }
+  div {
+    margin: 0 auto;
+    text-align: right;
+  }
+  h4 {
+    color: ${colors.dark};
+    font-weight: 600;
+  }
 `;
 
 const Icons = () => (
   <>
     <IconSection>
-      <h3>Things I Know</h3>
-      <Bootstrap />
-      <Css />
-      <Express />
-      <Firebase />
-      <Gatsby />
-      <Heroku />
-      <Html />
-      <Jquery />
-      <Js />
-      <Mongodb />
-      <Node />
-      <Postgres />
-      <Python />
-      <Rails />
-      <RLogo />
-      <Redux />
-      <Ruby />
+      <h4>Things I Know</h4>
+      <div>
+        <Bootstrap />
+        <Css />
+        <Express />
+        <Firebase />
+        <Gatsby />
+        <Heroku />
+        <Html />
+        <Jquery />
+        <Js />
+        <Mongodb />
+        <Node />
+        <Postgres />
+        <Python />
+        <Rails />
+        <RLogo />
+        <Redux />
+        <Ruby />
+      </div>
     </IconSection>
     <IconSection>
-      <h3>Things I'm Learning</h3>
-      <Sass />
-      <Svelte />
-      <Tf />
-      <Ts />
-      <Vue />
+      <h4>Things I'm Learning</h4>
+      <div>
+        <Sass />
+        <Svelte />
+        <Tf />
+        <Ts />
+        <Vue />
+      </div>
     </IconSection>
     <IconSection>
-      <h3>Tools I Use</h3>
-      <Atom />
-      <Bash />
-      <Chrome />
-      <Git />
-      <Github />
-      <Slack />
-      <Trello />
-      <Vs />
+      <h4>Tools I Use</h4>
+      <div>
+        <Atom />
+        <Bash />
+        <Chrome />
+        <Git />
+        <Github />
+        <Slack />
+        <Trello />
+        <Vs />
+      </div>
     </IconSection>
   </>
 );

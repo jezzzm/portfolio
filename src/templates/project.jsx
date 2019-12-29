@@ -20,7 +20,9 @@ const ProjectHeroContainer = styled("div")`
 
   img,
   video {
+    width: 100%;
     max-width: 600px;
+    margin: auto;
   }
 `;
 
