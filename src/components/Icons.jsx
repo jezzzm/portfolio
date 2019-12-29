@@ -34,57 +34,57 @@ import Vs from "../images/vs.svg";
 import Vue from "../images/vue.svg";
 
 const IconSection = styled.section`
-    margin: 2em 0;
-    svg {
-        max-width: 120px;
-        max-height: 70px;
-        margin: 20px 20px 0 0;
-        box-sizing: border-box;
-    }
+  margin: 2em 0;
+  svg {
+    max-width: 120px;
+    max-height: 70px;
+    margin: 20px 20px 0 0;
+    box-sizing: border-box;
+  }
 `;
 
 const Icons = () => (
-    <>
-        <IconSection>
-            <h3>Things I Know</h3>
-            <Bootstrap />
-            <Css />
-            <Express />
-            <Firebase />
-            <Gatsby />
-            <Heroku />
-            <Html />
-            <Jquery />
-            <Js />
-            <Mongodb />
-            <Node />
-            <Postgres />
-            <Python />
-            <Rails />
-            <RLogo />
-            <Redux />
-            <Ruby />
-        </IconSection>
-        <IconSection>
-            <h3>Things I'm Learning</h3>
-            <Sass />
-            <Svelte />
-            <Tf />
-            <Ts />
-            <Vue />
-        </IconSection>
-        <IconSection>
-            <h3>Tools I Use</h3>
-            <Atom />
-            <Bash />
-            <Chrome />
-            <Git />
-            <Github />
-            <Slack />
-            <Trello />
-            <Vs />
-        </IconSection>
-    </>
+  <>
+    <IconSection>
+      <h3>Things I Know</h3>
+      <Bootstrap />
+      <Css />
+      <Express />
+      <Firebase />
+      <Gatsby />
+      <Heroku />
+      <Html />
+      <Jquery />
+      <Js />
+      <Mongodb />
+      <Node />
+      <Postgres />
+      <Python />
+      <Rails />
+      <RLogo />
+      <Redux />
+      <Ruby />
+    </IconSection>
+    <IconSection>
+      <h3>Things I'm Learning</h3>
+      <Sass />
+      <Svelte />
+      <Tf />
+      <Ts />
+      <Vue />
+    </IconSection>
+    <IconSection>
+      <h3>Tools I Use</h3>
+      <Atom />
+      <Bash />
+      <Chrome />
+      <Git />
+      <Github />
+      <Slack />
+      <Trello />
+      <Vs />
+    </IconSection>
+  </>
 );
 
 export default Icons;
