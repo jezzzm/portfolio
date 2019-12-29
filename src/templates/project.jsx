@@ -141,19 +141,27 @@ const Project = ({ project, meta }) => {
                     )}
                 </ProjectTitle>
 
-                {project.project_hero_image && (
+                {(project.project_hero_image ||
+                    project.project_hero_mp4 ||
+                    project.project_hero_webm) && (
                     <ProjectHeroContainer>
-                        {/* <img src={project.project_hero_image.url} alt="bees" /> */}
-                        <video autoPlay loop muted playsInline>
-                            <source
-                                src={project.project_hero_webm.url}
-                                type="video/webm"
+                        {project.project_hero_webm ? (
+                            <video autoPlay loop muted playsInline>
+                                <source
+                                    src={project.project_hero_webm.url}
+                                    type="video/webm"
+                                />
+                                <source
+                                    src={project.project_hero_mp4.url}
+                                    type="video/mp4"
+                                />
+                            </video>
+                        ) : (
+                            <img
+                                src={project.project_hero_image.url}
+                                alt="bees"
                             />
-                            <source
-                                src={project.project_hero_mp4.url}
-                                type="video/mp4"
-                            />
-                        </video>
+                        )}
                     </ProjectHeroContainer>
                 )}
                 <ProjectBody>
