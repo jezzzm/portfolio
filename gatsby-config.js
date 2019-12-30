@@ -5,6 +5,13 @@ module.exports = {
     author: `Jez Milledge | zej.com.au`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-155136362-1",
+        head: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -48,14 +55,6 @@ module.exports = {
         theme_color: `#f73859`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
-      },
-    },
-    // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-155136362-1",
-        head: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
