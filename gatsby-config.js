@@ -38,28 +38,28 @@ module.exports = {
         linkResolver: () => post => `/${post.uid}`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `gatsby-prismic-starter-prist`,
-    //     short_name: `prist`,
-    //     start_url: `/`,
-    //     background_color: `#663399`,
-    //     theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     // icon: `src/images/oscar-icon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `jez-milledge-portfolio`,
+        short_name: `Jez Milledge`,
+        start_url: `/`,
+        background_color: `#dbedf3`,
+        theme_color: `#f73859`,
+        display: `minimal-ui`,
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+      },
+    },
     // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
-    // {
-    //     resolve: `gatsby-plugin-google-analytics`,
-    //     options: {
-    //         trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
-    //         head: true,
-    //     },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-155136362-1",
+        head: true,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 };
