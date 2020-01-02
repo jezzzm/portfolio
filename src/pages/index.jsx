@@ -88,7 +88,7 @@ const ProfilePic = styled.img`
   width: 300px;
 `;
 
-const RenderBody = ({ home, projects, meta }) => (
+const RenderBody = ({ home, projects, meta, icon }) => (
   <>
     <Helmet
       title={meta.title}
@@ -109,6 +109,10 @@ const RenderBody = ({ home, projects, meta }) => (
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:image`,
+          content: icon,
         },
         {
           name: `twitter:card`,
@@ -163,16 +167,16 @@ const RenderBody = ({ home, projects, meta }) => (
 );
 
 export default ({ data }) => {
-  //Required check for no data being returned
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
   const projects = data.prismic.allProjects.edges;
   const meta = data.site.siteMetadata;
+  const icon = data.file.publicURL;
 
   if (!doc || !projects) return null;
 
   return (
     <Layout>
-      <RenderBody home={doc.node} projects={projects} meta={meta} />
+      <RenderBody home={doc.node} projects={projects} meta={meta} icon={icon} />
     </Layout>
   );
 };
@@ -181,6 +185,7 @@ RenderBody.propTypes = {
   home: PropTypes.object.isRequired,
   projects: PropTypes.array.isRequired,
   meta: PropTypes.object.isRequired,
+  icon: PropTypes.string.isRequired,
 };
 
 export const query = graphql`
@@ -240,6 +245,9 @@ export const query = graphql`
         description
         author
       }
+    }
+    file(relativePath: { eq: "icon300.png" }) {
+      publicURL
     }
   }
 `;
