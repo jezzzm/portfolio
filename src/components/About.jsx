@@ -2,6 +2,7 @@ import React from "react";
 import Button from "components/_ui/Button";
 import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
+import colors from "styles/colors";
 import { RichText } from "prismic-reactjs";
 import PropTypes from "prop-types";
 
@@ -38,7 +39,7 @@ const AboutLink = styled("a")`
   font-weight: 600;
   line-height: 1.9;
   text-decoration: none;
-  color: currentColor;
+  color: ${colors.red};
 
   span {
     margin-left: 1em;
