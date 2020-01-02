@@ -112,7 +112,11 @@ const RenderBody = ({ home, projects, meta, icon }) => (
         },
         {
           property: `og:image`,
-          content: icon,
+          content: `${meta.url}${icon}`,
+        },
+        {
+          name: `twitter:image`,
+          content: `${meta.url}${icon}`,
         },
         {
           name: `twitter:card`,
@@ -244,6 +248,7 @@ export const query = graphql`
         title
         description
         author
+        url
       }
     }
     file(relativePath: { eq: "icon300.png" }) {
