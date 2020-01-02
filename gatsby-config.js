@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Jez Milledge | Software Developer`,
-    description: `Portfolio of Jez Milledge, a Sydney-based software developer.`,
-    author: `Jez Milledge | zej.com.au`,
+    description: `The portfolio and writings of Jez Milledge, a Sydney-based software developer, former medtech consultant, and perfectly-weighted through-ball enthusiast.`,
+    author: `Jez Milledge`,
     url: "https://zej.com.au",
   },
   plugins: [

@@ -115,6 +115,10 @@ const RenderBody = ({ home, projects, meta, icon }) => (
           content: `${meta.url}${icon}`,
         },
         {
+          property: `og:author`,
+          content: meta.author,
+        },
+        {
           name: `twitter:image`,
           content: `${meta.url}${icon}`,
         },
