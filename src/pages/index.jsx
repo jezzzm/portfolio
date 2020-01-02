@@ -251,7 +251,7 @@ export const query = graphql`
         url
       }
     }
-    file(relativePath: { eq: "icon300.png" }) {
+    file(relativePath: { eq: "logo-og.png" }) {
       publicURL
     }
   }
