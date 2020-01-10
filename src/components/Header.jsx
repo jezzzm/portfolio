@@ -93,13 +93,12 @@ const Header = () => (
         <Link activeClassName="Link--is-active" to="/projects">
           Projects
         </Link>
+        <Link activeClassName="Link--is-active" to="/blog">
+          Writing
+        </Link>
       </HeaderLinks>
     </HeaderContent>
   </HeaderContainer>
 );
-// {
-//     /* <Link activeClassName="Link--is-active" to="/blog">
-//     Writing
-// </Link>; */
-// }
+
 export default Header;
