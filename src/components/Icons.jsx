@@ -55,48 +55,19 @@ const IconSection = styled.section`
 const Icons = () => (
   <>
     <IconSection>
-      <h4>Things I Know</h4>
+      <h4>Primary skills</h4>
       <div>
-        <Bootstrap />
-        <Css />
-        <Express />
-        <Firebase />
-        <Gatsby />
-        <Heroku />
         <Html />
-        <Jquery />
-        <Js />
-        <Mongodb />
+        <Css />
+        <Ts />
+        <RLogo />
         <Node />
+        <Express />
+        <Gatsby />
         <Postgres />
         <Python />
-        <Rails />
-        <RLogo />
         <Redux />
         <Ruby />
-      </div>
-    </IconSection>
-    <IconSection>
-      <h4>Things I'm Learning</h4>
-      <div>
-        <Sass />
-        <Svelte />
-        <Tf />
-        <Ts />
-        <Vue />
-      </div>
-    </IconSection>
-    <IconSection>
-      <h4>Tools I Use</h4>
-      <div>
-        <Atom />
-        <Bash />
-        <Chrome />
-        <Git />
-        <Github />
-        <Slack />
-        <Trello />
-        <Vs />
       </div>
     </IconSection>
   </>
