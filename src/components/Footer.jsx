@@ -33,7 +33,7 @@ const FooterAuthor = styled("a")`
 const Footer = () => (
   <FooterContainer>
     <FooterAuthor href="https://zej.com.au">
-      © 2020 — Jeremy Milledge
+      © {new Date().getFullYear()} — Jeremy Milledge
     </FooterAuthor>
   </FooterContainer>
 );
