@@ -1,4 +1,5 @@
-import css from "@emotion/css";
+import { css } from "@emotion/react";
+import '@fontsource/inter';
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 
@@ -10,6 +11,7 @@ const globalStyles = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100%;
+    font-family: Inter, Helvetica, sans-serif;
   }
 
   body {
